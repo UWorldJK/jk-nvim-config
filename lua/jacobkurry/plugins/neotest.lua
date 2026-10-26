@@ -16,10 +16,9 @@ return {
     config = function()
       require("neotest").setup({
         adapters = {
-          require("neotest-java")({
-            -- Configure for both Gradle and standalone Java projects
-            junit_jar = vim.fn.expand("~/.local/share/nvim/neotest-java/junit-platform-console-standalone-1.10.0.jar"),
-          }),
+          -- junit_jar left unset: neotest-java finds its pinned jar in stdpath("data")/neotest-java
+          -- (install/update it with :NeotestJava setup)
+          require("neotest-java")({}),
         },
         icons = {
           expanded = "▾",

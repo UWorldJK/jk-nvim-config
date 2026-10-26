@@ -16,6 +16,12 @@ keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight
 -- delete single character without copying into register
 -- keymap.set("n", "x", '"_x')
 
+-- toggle comments (built-in gc/gcc; Ctrl+/ arrives as <C-_> in most terminals)
+for _, lhs in ipairs({ "<leader>/", "<C-/>", "<C-_>" }) do
+  keymap.set("n", lhs, "gcc", { remap = true, desc = "Toggle comment on line" })
+  keymap.set("x", lhs, "gc", { remap = true, desc = "Toggle comment on selection" })
+end
+
 -- increment/decrement numbers
 keymap.set("n", "+", "<C-a>", { desc = "Increment number" })
 keymap.set("n", "-", "<C-x>", { desc = "Decrement number" })
@@ -65,8 +71,7 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 -- Run Java file
 keymap.set("n", "<leader>rj", ":!javac % && java %:r<CR>", { desc = "Compile and run Java file" })
 
--- Format file
-keymap.set("n", "<leader>fm", function() vim.lsp.buf.format() end, { desc = "Format file with LSP" })
+-- Format file: <leader>fm is defined in plugins/formatting.lua (conform, with LSP fallback)
 
 -- Test Runner Keymaps (Gradle/JUnit optimized)
 local test_runner = require("jacobkurry.core.test-runner")

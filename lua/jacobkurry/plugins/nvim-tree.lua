@@ -4,10 +4,6 @@ return {
   config = function()
     local nvimtree = require("nvim-tree")
 
-    -- recommended settings from nvim-tree documentation
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-
     -- Custom on_attach function for nvim-tree keymaps
     local function on_attach(bufnr)
       local api = require("nvim-tree.api")
@@ -36,10 +32,6 @@ return {
 
     nvimtree.setup({
       on_attach = on_attach,
-      system_open = {
-        cmd = 'open',
-        args = {},
-      },
       view = {
         width = {
           max = -1,
@@ -99,6 +91,10 @@ return {
     keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
   end,
   init = function()
+    -- recommended settings from nvim-tree documentation (must run before netrw loads)
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+
     -- Auto-open nvim-tree when opening a directory
     vim.api.nvim_create_autocmd("VimEnter", {
       callback = function(data)
