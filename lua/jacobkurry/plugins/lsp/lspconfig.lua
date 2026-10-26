@@ -63,7 +63,7 @@ return {
         keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
         opts.desc = "Restart LSP"
-        keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+        keymap.set("n", "<leader>rs", "<cmd>lsp restart<CR>", opts) -- mapping to restart lsp if necessary (:LspRestart is gone in 0.12)
       end,
     })
 
@@ -172,8 +172,8 @@ return {
     })
 
     -- configure helm language server
+    -- (default filetypes: helm + yaml.helm-values, see core/filetypes.lua)
     vim.lsp.config("helm_ls", {
-      filetypes = { "helm" },
       settings = {
         ["helm-ls"] = {
           yamlls = {

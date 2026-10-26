@@ -7,6 +7,7 @@ local parsers = {
   "typescript",
   "tsx",
   "yaml",
+  "helm",
   "html",
   "css",
   "prisma",
