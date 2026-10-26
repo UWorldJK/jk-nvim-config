@@ -152,14 +152,14 @@ These shortcuts work in **Insert Mode** when the completion menu appears:
 
 | Key | Action | Description |
 |-----|--------|-------------|
+| `<Space>/` or `Ctrl+/` | Toggle Line Comment | Comment/uncomment current line |
 | `gcc` | Toggle Line Comment | Comment/uncomment current line |
 | `gc{motion}` | Comment with Motion | Comment with motion (e.g., `gcap` for paragraph) |
-| `gbc` | Toggle Block Comment | Block comment current line |
-| `gb{motion}` | Block Comment Motion | Block comment with motion |
 
 In **Visual Mode:**
-- `gc` - Comment selection
-- `gb` - Block comment selection
+- `<Space>/`, `Ctrl+/` or `gc` - Comment/uncomment selection
+
+Uses Neovim's built-in commenting, which picks the right comment style per language (including embedded languages via treesitter).
 
 ---
 
